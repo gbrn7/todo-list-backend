@@ -11,5 +11,5 @@ interface ToDoListServiceInterface
 {
   public function storeToDoList(CreateToDoListReqModel $data): CreateToDoListResponse;
   public function generateExcelReport(ToDoListFilterReqModel $reqModel);
-  // public function getToDoDataChart();
+  public function getToDoDataChart(string $dataType);
 }

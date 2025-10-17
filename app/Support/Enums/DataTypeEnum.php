@@ -2,7 +2,7 @@
 
 namespace App\Support\Enums;
 
-enum TypeEnum: string
+enum DataTypeEnum: string
 {
   case STATUS = 'status';
   case PRIORITY = 'priority';

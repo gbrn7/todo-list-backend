@@ -3,8 +3,12 @@
 namespace App\Http\Services;
 
 use App\Exports\ToDoListExport;
+use App\Http\Resources\ChartDataByAssigneeReSource;
+use App\Http\Resources\ChartDataByPriorityReSource;
+use App\Http\Resources\ChartDataByStatusReSource;
 use App\Http\Resources\CreateToDoListResponse;
 use App\Models\ToDoList;
+use App\Support\Enums\DataTypeEnum;
 use App\Support\Interfaces\Repositories\ToDoListRepositoryInterface;
 use App\Support\Interfaces\Services\ToDoListServiceInterface;
 use App\Support\Model\CreateToDoListReqModel;
@@ -43,5 +47,23 @@ class ToDoListService implements ToDoListServiceInterface
 
     return Excel::download(new ToDoListExport($report, $numberOfTodos, $totalTimeTracked), 'ToDoListReport.xlsx');
   }
-  // public function getToDoDataChart() {}
+
+  public function getToDoDataChart(string $dataType)
+  {
+    switch ($dataType) {
+      case DataTypeEnum::STATUS->value:
+        return ChartDataByStatusReSource::make($this->toDoListRepository->getChartDataByStatus());
+        break;
+      case DataTypeEnum::PRIORITY->value:
+        return ChartDataByPriorityReSource::make($this->toDoListRepository->getChartDataByPriority());
+        break;
+
+      case DataTypeEnum::ASSIGNEE->value:
+        return ChartDataByAssigneeReSource::make($this->toDoListRepository->getChartDataByAssignee());
+        break;
+      default:
+        throw new HttpException(400, 'invalid data type chart');
+        break;
+    }
+  }
 }

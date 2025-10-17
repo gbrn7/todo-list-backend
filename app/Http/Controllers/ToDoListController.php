@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GetChartDataReq;
 use App\Http\Requests\ToDoListCreateRequest;
 use App\Http\Requests\ToDoListRequest;
 use App\Http\Resources\CreateToDoListResponse;
@@ -17,7 +18,7 @@ class ToDoListController extends Controller
         protected ToDoListServiceInterface $toDoListService
     ) {}
 
-    public function CreateToDoList(ToDoListCreateRequest $request)
+    public function createToDoList(ToDoListCreateRequest $request)
     {
         $reqModel = new CreateToDoListReqModel($request);
         try {
@@ -29,11 +30,22 @@ class ToDoListController extends Controller
         }
     }
 
-    public function GenerateExcelReport(ToDoListRequest $request)
+    public function generateExcelReport(ToDoListRequest $request)
     {
         $reqModel = new ToDoListFilterReqModel($request);
         try {
             return $this->toDoListService->generateExcelReport($reqModel);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'error' => $th->getMessage()
+            ], 400);
+        }
+    }
+
+    public function getChartData(GetChartDataReq $request)
+    {
+        try {
+            return $this->toDoListService->getToDoDataChart($request->type);
         } catch (\Throwable $th) {
             return response()->json([
                 'error' => $th->getMessage()

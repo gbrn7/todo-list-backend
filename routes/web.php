@@ -9,5 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'api/v1/todolist'], function () {
     Route::post('/', [ToDoListController::class, 'createToDoList']);
-    Route::get('/', [ToDoListController::class, 'GenerateExcelReport']);
+    Route::get('/', [ToDoListController::class, 'generateExcelReport']);
+    Route::get('/chart', [ToDoListController::class, 'getChartData']);
 });

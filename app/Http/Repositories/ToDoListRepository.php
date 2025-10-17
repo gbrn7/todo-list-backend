@@ -50,4 +50,19 @@ class ToDoListRepository implements ToDoListRepositoryInterface
       ->orderBy('id', 'desc')
       ->get();
   }
+
+  public function getChartDataByStatus()
+  {
+    return ToDoList::selectRaw('status, COUNT(*) as count')->groupBy('status')->get();
+  }
+
+  public function getChartDataByPriority()
+  {
+    return ToDoList::selectRaw('priority, COUNT(*) as count')->groupBy('priority')->get();
+  }
+
+  public function getChartDataByAssignee()
+  {
+    return ToDoList::selectRaw("assignee, COUNT(*) as total_todos, SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) as total_pending_todos, SUM(time_tracked) as total_timetracked")->groupBy('assignee')->get();
+  }
 }
