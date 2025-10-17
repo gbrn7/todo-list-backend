@@ -12,6 +12,7 @@ class CreateToDoListResponse extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'assignee' => $this->assignee,
             'due_date' => $this->due_date,
             'time_tracked' => $this->time_tracked,
             'status' => $this->status,

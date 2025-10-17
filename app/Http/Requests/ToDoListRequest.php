@@ -24,8 +24,8 @@ class ToDoListRequest extends FormRequest
         return [
             'title' => "nullable",
             'assignee' => "nullable",
-            'start_date' => "nullable",
-            'end_date' => "nullable",
+            'start_due_date' => "nullable",
+            'end_due_date' => "nullable",
             'min_time_tracked' => "nullable",
             'max_time_tracked' => "nullable",
             'status' => "nullable",

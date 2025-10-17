@@ -10,5 +10,5 @@ use Illuminate\Database\Eloquent\Collection;
 interface ToDoListRepositoryInterface
 {
   public function Create(CreateToDoListReqModel $data): ToDoList;
-  // public function getToDoList(ToDoListFilterReqModel $reqModel): Collection;
+  public function getToDoList(ToDoListFilterReqModel $reqModel): Collection;
 }

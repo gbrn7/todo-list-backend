@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 //     dd('halo');
 // });
 
-Route::group(['prefix' => 'api/v1'], function () {
-    Route::post('/todolist', [ToDoListController::class, 'createToDoList']);
+Route::group(['prefix' => 'api/v1/todolist'], function () {
+    Route::post('/', [ToDoListController::class, 'createToDoList']);
+    Route::get('/', [ToDoListController::class, 'GenerateExcelReport']);
 });

@@ -9,20 +9,20 @@ class ToDoListFilterReqModel
 {
   public ?string $title;
   public ?string $assignee;
-  public ?string $startDate;
-  public ?string $endDate;
+  public ?string $startDueDate;
+  public ?string $endDueDate;
   public ?string $minTimeTracked;
   public ?string $maxTimeTracked;
   public ?string $status;
   public ?string $priority;
-  public TypeEnum $type;
+  public ?string $type;
 
   public function __construct(Request $request)
   {
     $this->title = $request->title;
     $this->assignee = $request->assignee;
-    $this->startDate = $request->start_date;
-    $this->endDate = $request->end_date;
+    $this->startDueDate = $request->start_due_date;
+    $this->endDueDate = $request->end_due_date;
     $this->minTimeTracked = $request->min_time_tracked;
     $this->maxTimeTracked = $request->max_time_tracked;
     $this->status = $request->status;
