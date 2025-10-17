@@ -10,7 +10,7 @@ Before starting, make sure you have the following installed:
 
 -   [PHP](https://www.php.net/) >= 8.2
 -   [Composer](https://getcomposer.org/)
--   [MySQL](https://www.mysql.com/) or compatible database
+-   [MySQL](https://www.mysql.com/)
 -   [Git](https://git-scm.com/)
 
 ---
@@ -20,7 +20,7 @@ Before starting, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/your-laravel-project.git
+git clone https://github.com/gbrn7/todo-list-backend
 cd your-laravel-project
 ```
 
@@ -61,4 +61,12 @@ Run migrations:
 
 ```bash
 php artisan migrate
+```
+
+### 7. Start the Application
+
+Run migrations:
+
+```bash
+php artisan serve
 ```
