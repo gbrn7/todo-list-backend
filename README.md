@@ -21,7 +21,7 @@ Before starting, make sure you have the following installed:
 
 ```bash
 git clone https://github.com/gbrn7/todo-list-backend
-cd your-laravel-project
+cd todo-list-backend
 ```
 
 ### 2. Install PHP Dependencies
